@@ -1,0 +1,30 @@
+{% extends "stagiaire_myapp/base.html" %}
+
+
+
+{% block content %}
+<form action="" autocomplete="off" method="post">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        {{form.fullName}}
+    </div>
+    <div class="form-group">
+        <label for="stgMatricule">Matricule:</label>
+        {{form.stgMatricule}}
+    </div>
+    <div class="form-group">
+        <label for="email">mobile:</label>
+        {{form.mobile}}
+    </div>
+    <div class="form-group">
+        <label for="email">filiere:</label>
+        {{form.filiere}}
+    </div>
+    <button class="btn btn-success">ADD</button>
+    <br/>
+    <a href="{% url 'stagiaire_list' %}">back list</a>
+</form>
+    
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "stagiaire_myapp/base.html" %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Matricule</th>
+            <th scope="col">Full name</th>
+            <th scope="col">mobile</th>
+            <th scope="col">filiere</th>
+            <th scope="col">actions</th>
+            <th scope="col"><a class="btn btn-secondary" href="{% url 'stagiaire_insert' %}">Ajouter</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for stg in stgData %}
+            <tr>
+                <th scope="row">{{stg.fullName}}</th>
+                <td>{{ stg.stgMatricule }}</td>
+                <td>{{ stg.mobile }}</td>
+                <td>{{ stg.filiere }}</td>
+                <td>
+                    <a href="{% url 'stagiaire_update' stg.id %}" 
+                      class="btn btn-secondary p-2">Edit</a>
+                    <br/>
+                    <form action="{% url 'stagiaire_delete' stg.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
