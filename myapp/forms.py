@@ -11,4 +11,3 @@ class StagiaireFroms(forms.ModelForm):
     def __init__(self, *args, **kwargs):
             super(StagiaireFroms,self).__init__(*args, **kwargs)
             self.fields['filiere'].empty_label = "Select"
-            # self.fields['emp_code'].required = False
